@@ -1,8 +1,8 @@
 <?php
 // config.php - Konfigurasi Supabase
 
-define('SUPABASE_URL', 'https://your-project.supabase.co'); // Ganti dengan URL project lu
-define('SUPABASE_KEY', 'your-anon-key-here'); // Ganti dengan anon/public key lu
+define('SUPABASE_URL', 'https://nykkjdlfrldjtlcqpvnp.supabase.co'); // Ganti dengan URL project lu
+define('SUPABASE_KEY', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55a2tqZGxmcmxkanRsY3Fwdm5wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE4Nzk4NzYsImV4cCI6MjA3NzQ1NTg3Nn0.Yx12iGsgrScQ9us9fgcUwqUA5JU2YHSFFoMCiER06oE'); // Ganti dengan anon/public key lu
 
 function supabaseRequest($endpoint, $method = 'GET', $data = null) {
     $url = SUPABASE_URL . '/rest/v1/' . $endpoint;
